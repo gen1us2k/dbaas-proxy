@@ -40,10 +40,7 @@ func (s *Service) init() {
 		AllowHeaders:     []string{"Origin"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
-		AllowOriginFunc: func(origin string) bool {
-			return origin == "https://github.com"
-		},
-		MaxAge: 12 * time.Hour,
+		MaxAge:           12 * time.Hour,
 	}))
 	s.router.POST("/k8s", s.addK8s)
 	s.router.DELETE("/k8s/:name", s.deleteK8s)

@@ -1,8 +1,15 @@
 package main
 
-import "github.com/gen1us2k/dbaas-proxy/api"
+import (
+	"log"
+
+	"github.com/gen1us2k/dbaas-proxy/api"
+)
 
 func main() {
-	a := api.New()
+	a, err := api.New()
+	if err != nil {
+		log.Fatal(err)
+	}
 	a.Run()
 }

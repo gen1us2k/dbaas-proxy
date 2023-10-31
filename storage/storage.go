@@ -26,6 +26,8 @@ func (s *Storage) Add(name string, kubeconfig *rest.Config) {
 	s.items[name] = kubeconfig
 }
 func (s *Storage) Get(name string) *rest.Config {
+	s.mu.Lock()
+	defer s.mu.Unlock()
 	return s.items[name]
 }
 
